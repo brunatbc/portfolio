@@ -881,6 +881,11 @@ footer {
     font-size: 18vw;
   }
 
+  .project-card.endocrinologist .project-title h3 {
+  font-size: 14vw;
+  overflow-wrap: anywhere;
+}
+
   .project-note {
     text-align: left;
     margin-top: 35px;
