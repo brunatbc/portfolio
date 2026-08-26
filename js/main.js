@@ -10,20 +10,19 @@ function updateLanguage(language) {
   const dictionary = translations[language];
 
   document.documentElement.lang = language === "pt" ? "pt-BR" : "en";
+  document.title = dictionary["page.title"];
 
   const description = document.querySelector('meta[name="description"]');
   if (description) {
-    description.setAttribute(
-      "content",
-      language === "pt"
-        ? "Portfólio de Web Design, UI/UX e WordPress — Bruna Teles."
-        : "Web Design, UI/UX and WordPress portfolio — Bruna Teles.",
-    );
+    description.setAttribute("content", dictionary["page.description"]);
   }
 
   document.querySelectorAll("[data-i18n]").forEach((element) => {
     const key = element.dataset.i18n;
-    if (dictionary[key] !== undefined) element.innerHTML = dictionary[key];
+
+    if (dictionary[key] !== undefined) {
+      element.innerHTML = dictionary[key];
+    }
   });
 
   document.querySelectorAll(".lang a").forEach((link) => {
@@ -31,27 +30,29 @@ function updateLanguage(language) {
   });
 
   document.querySelectorAll("[data-alt-pt][data-alt-en]").forEach((image) => {
-    image.alt = language === "pt" ? image.dataset.altPt : image.dataset.altEn;
+    image.alt =
+      language === "pt" ? image.dataset.altPt : image.dataset.altEn;
   });
 
   localStorage.setItem("portfolio-language", language);
-
-  if (typeof window.updateLastFM === "function") {
-    window.updateLastFM();
-  }
 }
 
 document.querySelectorAll(".lang a").forEach((link) => {
   link.addEventListener("click", (event) => {
     event.preventDefault();
     updateLanguage(link.dataset.lang);
+
+    if (typeof window.updateLastFM === "function") {
+      window.updateLastFM();
+    }
   });
 });
 
 const savedLanguage = localStorage.getItem("portfolio-language");
-updateLanguage(
-  savedLanguage === "en" || savedLanguage === "pt" ? savedLanguage : "pt",
-);
+const initialLanguage =
+  savedLanguage === "en" || savedLanguage === "pt" ? savedLanguage : "pt";
+
+updateLanguage(initialLanguage);
 
 if (typeof window.updateLastFM === "function") {
   window.updateLastFM();

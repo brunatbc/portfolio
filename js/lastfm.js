@@ -40,10 +40,12 @@ async function updateLastFM() {
 
     const data = await response.json();
     const track = data?.recenttracks?.track?.[0];
+
     if (!track) throw new Error("No track");
 
     title.textContent =
       track.name || (language === "pt" ? "sem título" : "untitled");
+
     artist.textContent =
       track.artist?.["#text"] || (language === "pt" ? "artista" : "artist");
 
@@ -61,6 +63,7 @@ async function updateLastFM() {
     }
 
     const nowPlaying = track["@attr"]?.nowplaying === "true";
+
     status.textContent = nowPlaying
       ? language === "pt"
         ? "tocando agora"
