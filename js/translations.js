@@ -30,7 +30,7 @@ const translations = {
     "about.p3":
       "Hoje, gosto especialmente de projetos que misturam <em>design, estrutura e personalidade.</em>",
     "about.spanish": "espanhol<br>nível b1",
-    "about.english": "✦ inglês<br>nível c1",
+    "about.english": "✦ inglês<br>nível c2",
 
     "projects.label": "02 / projetinhos",
     "projects.title1": "algumas coisas que",
@@ -172,7 +172,7 @@ const translations = {
     "about.p3":
       "Today, I especially enjoy projects that bring together <em>design, structure, and personality.</em>",
     "about.spanish": "spanish<br>level b1",
-    "about.english": "✦ english<br>level c1",
+    "about.english": "✦ english<br>level c2",
 
     "projects.label": "02 / little projects",
     "projects.title1": "some things",
